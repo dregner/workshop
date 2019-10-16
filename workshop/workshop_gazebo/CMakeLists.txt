@@ -24,14 +24,6 @@ catkin_package(
 )
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-if (${gazebo_VERSION_MAJOR} LESS 6)
-    # These two
-    include(FindBoost)
-    find_package(Boost ${MIN_BOOST_VERSION} REQUIRED system filesystem regex)
-    target_link_libraries(velocidade ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-else ()
-    target_link_libraries(velocidade ${GAZEBO_LIBRARIES})
-endif ()
 
 foreach (dir launch models resource worlds)
     install(DIRECTORY ${dir}/

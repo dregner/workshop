@@ -26,6 +26,7 @@
     <run_depend>gazebo_msgs</run_depend>
     <run_depend>gazebo_ros</run_depend>
     <run_depend>gazebo_ros_control</run_depend>
+    <run_depend>workshop_description</run_depend>
     <run_depend>xacro</run_depend>
     <run_depend>sensor_msgs</run_depend>
     <run_depend>roscpp</run_depend>

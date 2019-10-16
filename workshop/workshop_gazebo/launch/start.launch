@@ -2,6 +2,7 @@
     <arg name="world_name" default="basic"/>
     <arg name="verbose" default="true"/>
     <arg name="paused" default="true"/>
+    <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="true"/>
 
     <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find workshop_gazebo)/models"/>
@@ -10,6 +11,15 @@
         <arg name="world_name" value="$(find workshop_gazebo)/worlds/$(arg world_name).world"/>
         <arg name="verbose" value="$(arg verbose)"/>
         <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui" value="$(arg gui)"/>
     </include>
+
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find workshop_description)/urdf/car.xacro'" />
+
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -x 0 -y 0 -z 2 -model car -param robot_description"/>
+
 </launch>
