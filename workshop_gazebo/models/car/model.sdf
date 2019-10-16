@@ -18,11 +18,11 @@
                     </mesh>
                 </geometry>
                 <material>
-                    <script>
-                        <uri> model://car/materials/scripts</uri>
-                        <uri> model://car/materials/textures</uri>
-                        <name>Car/Normal</name>
-                    </script>
+<!--                    <script>-->
+<!--                        <uri> model://car/materials/scripts</uri>-->
+<!--                        <uri> model://car/materials/textures</uri>-->
+<!--                        <name>Car/Normal</name>-->
+<!--                    </script>-->
                 </material>
             </visual>
         </link>

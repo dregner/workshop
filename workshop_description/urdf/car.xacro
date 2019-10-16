@@ -7,16 +7,18 @@
     <!--    Properties    -->
     <xacro:property name="namespace" value="car"/>
     <xacro:property name="PI" value="3.1415926535897931"/>
+    <xacro:property name="skin_car" value="package://workshop_description/meshes/car/car.dae"/>
+
 
     <!-- Properties of base -->
     <xacro:property name="height" value=".2"/>
     <xacro:property name="width" value="1.2"/>
-    <xacro:property name="length" value="2"/>
+    <xacro:property name="length" value="2.5"/>
     <xacro:property name="mass_base" value="1"/>
 
     <!-- Properties of wheels    -->
-    <xacro:property name="radius" value="0.3"/>
-    <xacro:property name="h" value=".05"/>
+    <xacro:property name="radius" value="0.25"/>
+    <xacro:property name="h" value="0.05"/>
     <xacro:property name="mass_wheel" value="0.2"/>
 
     <!-- Including Color material for Gazebo -->
@@ -39,9 +41,9 @@
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 ${height/2}" rpy="0 0 0"/>
+            <origin xyz="0 0 -${height/2}" rpy="0 0 ${PI/2}"/>
             <geometry>
-                <box size="${length} ${width} ${height}"/>
+                <mesh filename="${skin_car}" scale="1 1 1"/>
             </geometry>
         </visual>
         <inertial>
