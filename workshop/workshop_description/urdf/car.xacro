@@ -19,7 +19,8 @@
     <xacro:property name="h" value=".05"/>
     <xacro:property name="mass_wheel" value="0.2"/>
 
-
+    <!-- Including Color material for Gazebo -->
+    <xacro:include filename="$(find workshop_description)/urdf/materials.xacro"/>
 
     <link name="world"/>
 
@@ -40,7 +41,6 @@
             <geometry>
                 <box size="${length} ${width} ${height}"/>
             </geometry>
-            <material name="orange"/>
         </visual>
         <inertial>
             <origin xyz="0 0 ${height/2}" rpy="0 0 0"/>
@@ -52,30 +52,31 @@
     </link>
 
     <joint name="front_wheel_r_joint" type="continuous">
-        <origin xyz="${length/2} ${width/2} ${height/2}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="${length/2} ${(h+width)/2} ${height/2}" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="front_wheel_r_link"/>
         <axis xyz="0 1 0"/>
         <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
     </joint>
     <joint name="front_wheel_l_joint" type="continuous">
-        <origin xyz="${length/2} ${-width/2} ${height/2}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="${length/2} -${(h+width)/2} ${height/2}" rpy="0.0 0.0 0"/>
         <parent link="base_link"/>
         <child link="front_wheel_l_link"/>
         <axis xyz="0 1 0"/>
         <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
     </joint>
     <joint name="back_wheel_r_joint" type="continuous">
-        <origin xyz="${length/2} ${width/2} ${height/2}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="${-length/2} ${(h+width)/2} ${height/2}" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
-        <child link="front_wheel_r_link"/>
+        <child link="back_wheel_r_link"/>
         <axis xyz="0 1 0"/>
         <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
     </joint>
+
     <joint name="back_wheel_l_joint" type="continuous">
-        <origin xyz="${length/2} ${-width/2} ${height/2}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="${-length/2} -${(h+width)/2} ${height/2}" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
-        <child link="front_wheel_l_link"/>
+        <child link="back_wheel_l_link"/>
         <axis xyz="0 1 0"/>
         <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
     </joint>
