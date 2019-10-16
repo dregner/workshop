@@ -10,7 +10,7 @@
 					  front_wheel_r_velocity
 					  front_wheel_l_velocity
 					  back_wheel_r_velocity
-					  back_wheel_r_velocity"/>
+					  back_wheel_l_velocity"/>
 
     <!-- convert joint states to TF transforms for rviz, etc -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"

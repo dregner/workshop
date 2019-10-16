@@ -7,31 +7,35 @@
     <!--    Properties    -->
     <xacro:property name="namespace" value="car"/>
     <xacro:property name="PI" value="3.1415926535897931"/>
-    <xacro:property name="skin_car" value="package://workshop_description/meshes/car/car.dae"/>
+    <xacro:property name="skin_car" value="package://workshop_description/meshes/car/BMW.dae"/>
 
 
     <!-- Properties of base -->
     <xacro:property name="height" value=".2"/>
     <xacro:property name="width" value="1.2"/>
     <xacro:property name="length" value="2.5"/>
-    <xacro:property name="mass_base" value="1"/>
+    <xacro:property name="mass_base" value="10"/>
 
     <!-- Properties of wheels    -->
     <xacro:property name="radius" value="0.25"/>
     <xacro:property name="h" value="0.05"/>
-    <xacro:property name="mass_wheel" value="0.2"/>
+    <xacro:property name="mass_wheel" value="2"/>
 
     <!-- Including Color material for Gazebo -->
     <xacro:include filename="$(find workshop_description)/urdf/materials.xacro"/>
 
     <!--    Including sensors component-->
     <xacro:include filename="$(find workshop_description)/urdf/component_snippets.xacro"/>
-<!--    <link name="world"/>-->
 
-<!--    <joint name="fixed" type="fixed">-->
-<!--        <parent link="world"/>-->
-<!--        <child link="base_link"/>-->
-<!--    </joint>-->
+    <!--    Include link to Gazebo structure-->
+    <xacro:include filename="$(find workshop_description)/urdf/car.gazebo"/>
+
+    <!--    <link name="world"/>-->
+
+    <!--    <joint name="fixed" type="fixed">-->
+    <!--        <parent link="world"/>-->
+    <!--        <child link="base_link"/>-->
+    <!--    </joint>-->
 
     <link name="base_link">
         <collision>
@@ -41,7 +45,7 @@
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 -${height/2}" rpy="0 0 ${PI/2}"/>
+            <origin xyz="0 0 -${height/2}" rpy="${PI/2} 0 ${PI}"/>
             <geometry>
                 <mesh filename="${skin_car}" scale="1 1 1"/>
             </geometry>
@@ -192,6 +196,47 @@
 
     <link name="imu_link">
     </link>
+
+    <transmission name="front_wheel_r_tran">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_wheel_r_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_wheel_r_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="front_wheel_l_tran">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_wheel_l_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_wheel_l_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="back_wheel_r_tran">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="back_wheel_r_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="back_wheel_r_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="back_wheel_l_tran">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="back_wheel_l_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="back_wheel_l_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 
 
     <!-- ADIS16448 IMU. -->

@@ -9,17 +9,17 @@ car:
   front_wheel_r_velocity:
     type: effort_controllers/JointVelocityController
     joint: front_wheel_r_joint
-    pid: {p: 25.0, i: 0.05, d: 0.0}
+    pid: {p: 10.0, i: 0.05, d: 0.0}
   front_wheel_l_velocity:
     type: effort_controllers/JointVelocityController
     joint: front_wheel_l_joint
-    pid: {p: 25.0, i: 0.05, d: 0.0}
+    pid: {p: 10.0, i: 0.05, d: 0.0}
   back_wheel_r_velocity:
     type: effort_controllers/JointVelocityController
     joint: back_wheel_r_joint
-    pid: {p: 25.0, i: 0.05, d: 0.0}
+    pid: {p: 10.0, i: 0.05, d: 0.0}
   back_wheel_l_velocity:
     type: effort_controllers/JointVelocityController
     joint: back_wheel_l_joint
-    pid: {p: 25.0, i: 0.05, d: 0.0}
+    pid: {p: 10.0, i: 0.05, d: 0.0}
 
