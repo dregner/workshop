@@ -17,13 +17,13 @@
                         <uri>model://car/meshes/car.dae</uri>
                     </mesh>
                 </geometry>
-                <material>
-                    <script>
-                        <uri> model://car/materials/scripts</uri>
-                        <uri> model://car/materials/textures</uri>
-                        <name>Car/Normal</name>
-                    </script>
-                </material>
+<!--                <material>-->
+<!--                    <script>-->
+<!--                        <uri> model://car/materials/scripts</uri>-->
+<!--                        <uri> model://car/materials/textures</uri>-->
+<!--                        <name>Car/Normal</name>-->
+<!--                    </script>-->
+<!--                </material>-->
             </visual>
         </link>
     </model>
