@@ -1,0 +1,25 @@
+
+car:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Wheel velocity Controllers ---------------------------------------
+  front_wheel_r_velocity:
+    type: effort_controllers/JointVelocityController
+    joint: front_wheel_r_joint
+    pid: {p: 25.0, i: 0.05, d: 0.0}
+  front_wheel_l_velocity:
+    type: effort_controllers/JointVelocityController
+    joint: front_wheel_l_joint
+    pid: {p: 25.0, i: 0.05, d: 0.0}
+  back_wheel_r_velocity:
+    type: effort_controllers/JointVelocityController
+    joint: back_wheel_r_joint
+    pid: {p: 25.0, i: 0.05, d: 0.0}
+  back_wheel_l_velocity:
+    type: effort_controllers/JointVelocityController
+    joint: back_wheel_l_joint
+    pid: {p: 25.0, i: 0.05, d: 0.0}
+
